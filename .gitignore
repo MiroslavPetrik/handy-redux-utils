@@ -10,3 +10,6 @@ yarn-error.log*
 
 # IntelliJ IDEA
 .idea
+
+# Build
+/out

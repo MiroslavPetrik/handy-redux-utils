@@ -1,8 +1,10 @@
 {
   "name": "handy-redux-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A set of handy & typed redux utils.",
   "author": "Miroslav Petrik",
+  "main": "out/index.js",
+  "types": "out/index.d.ts",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -16,7 +18,7 @@
     "yarn": ">=1.15.2"
   },
   "scripts": {
-    "compile": "tsc --declaration",
+    "prepublish": "tsc --declaration",
     "format": "prettier --write '**/*.{ts,md}'",
     "lint": "node ./node_modules/eslint/bin/eslint.js 'src/*.ts'"
   },
