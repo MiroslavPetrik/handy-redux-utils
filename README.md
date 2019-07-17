@@ -1,5 +1,12 @@
-# handy-redux
+# handy-redux-utils
+
 A set of handy & typed redux utils.
+
+## Install
+
+```
+npm i handy-redux-utils
+```
 
 ## Example Usage
 
@@ -10,20 +17,20 @@ import {
   createEmptyActionCreator,
   createInitialState,
   createReducer,
-  reduceAction
+  reduceAction,
 } from 'handy-redux';
 
 type LoginResponse = {
   token: string;
   user: {
     id: string;
-  }
+  };
 };
 
 type Credentials = {
   email: string;
   password: string;
-}
+};
 
 // Use `createActionCreator<T>(name)` for action with payload
 const loginRequestAction = createActionCreator<Credentials>('user/LOGIN_REQUEST');
@@ -37,7 +44,7 @@ type UserState = {
     id: string;
     email: string;
   };
-}
+};
 
 // Use `createInitialState<T>(initialState)` to define initial state
 const initialUserState = createInitialState<UserState>({
@@ -46,7 +53,8 @@ const initialUserState = createInitialState<UserState>({
 
 // Use `createReducer(state, ...actionsReducers)`
 // and `reduceAction(action, (state, payload) => nextState)` to reduce actions
-const user = createReducer(initialUserState.profile,
+const user = createReducer(
+  initialUserState.profile,
   reduceAction(loginSuccessAction, (_, { user: profile }) => profile),
   reduceAction(logoutAction, () => undefined)
 );
@@ -58,7 +66,7 @@ const login = takeLatest(loginRequestAction.guard, function*({ payload }) {
 
     yield put(loginSuccessAction(resp));
   } catch {
-    console.error("Failed to login.");
+    console.error('Failed to login.');
   }
 });
 
